@@ -35,3 +35,7 @@ SpendWise collects a monthly budget and 3 expenses via prompts, calculates total
 1. Keep index.html, style.css, script.js in same folder
 2. Open index.html with Live Server
 3. Answer prompts, open DevTools Console (F12) to view report
+
+
+
+<img width="689" height="300" alt="{1BF0AC89-64E2-4EC6-A4D2-0552CC325EB7}" src="https://github.com/user-attachments/assets/19ab0f3c-e75f-4dc5-a4b8-bd0e0f3a0f2e" />
