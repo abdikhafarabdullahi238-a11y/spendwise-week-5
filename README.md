@@ -1,41 +1,25 @@
-# SpendWise - JavaScript Foundation
+# SpendWise Budget Tracker - Week 6
 
-## What it does
-SpendWise collects a monthly budget and 3 expenses via prompts, calculates total expenses and remaining balance, and displays a labeled report in the console.
+Interactive personal budget tracker built with HTML, CSS and JavaScript.
 
-## How variables are used
-- `monthlyBudget` (number) stores budget
-- `expense1Desc`, `expense2Desc`, `expense3Desc` (string) store descriptions
-- `expense1Amount`, etc. (number) store amounts
-- `totalExpenses`, `remainingBalance` (number) store calculations
+## Features (PLP Week 6 Requirements)
+- **Conditional Logic (if/else):** Checks if balance is within budget or overspent
+- **Arrays:** Stores all expenses in `expenses = []` array of objects
+- **Loops:** Uses `for` loop to calculate total expenses and `for...of` to display list
+- **DOM Manipulation:** Updates expense list and results using `innerHTML` and `createElement`
+- **Event Handling:** Uses `addEventListener("click")` for Add Expense and Calculate Budget buttons
 
-## Data types used
-- String: expense descriptions
-- Number: budget and amounts (converted with Number())
-- The variables demonstrate proper initialization
+## How It Works
+1. Enter Monthly Budget (KSH)
+2. Enter Expense Name e.g Rent, Food
+3. Enter Amount KSH
+4. Click Add Expense to add to list
+5. Click Calculate Budget to see Total, Remaining Balance and budget status
 
-## How user input is collected
-- Using `prompt()` for budget and each expense description/amount
-- `Number()` converts amount input from string to number
-- Stored in variables in `getUserInput()` function
+## Technologies
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
 
-## How calculations are performed
-- `calculateTotalExpenses()`: `totalExpenses = expense1Amount + expense2Amount + expense3Amount`
-- `calculateRemaining()`: `remainingBalance = monthlyBudget - totalExpenses`
-
-## How functions help organize code
-- `getUserInput()` - handles all prompts
-- `calculateTotalExpenses()` - reusable total logic
-- `calculateRemaining()` - reusable balance logic
-- `checkBudgetStatus()` - returns budget status message
-- `displayResults()` - handles all console.log output
-- `runSpendWise()` - main flow controller
-
-## Setup
-1. Keep index.html, style.css, script.js in same folder
-2. Open index.html with Live Server
-3. Answer prompts, open DevTools Console (F12) to view report
-
-
-
-<img width="689" height="300" alt="{1BF0AC89-64E2-4EC6-A4D2-0552CC325EB7}" src="https://github.com/user-attachments/assets/19ab0f3c-e75f-4dc5-a4b8-bd0e0f3a0f2e" />
+## Author
+Abdikhafar Abdullahi - PLP Academy

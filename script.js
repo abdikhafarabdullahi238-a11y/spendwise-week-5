@@ -1,55 +1,46 @@
-function runSpendWise() {
-    // REQUIREMENT 2: Store Application Data
-    let userName = "";
-    let monthlyBudget = 0;
-    let rentExpense = 0;
-    let foodExpense = 0;
-    let transportExpense = 0;
+let expenses = [];
+const budgetInput = document.getElementById("budget");
+const nameInput = document.getElementById("expenseName");
+const amountInput = document.getElementById("expenseAmount");
+const expenseList = document.getElementById("expenseList");
+const resultDiv = document.getElementById("result");
 
-    // REQUIREMENT 3: Collect User Input
-    userName = prompt("Enter your name:");
-    monthlyBudget = Number(prompt("Enter your monthly budget:"));
-    rentExpense = Number(prompt("Enter Rent expense:"));
-    foodExpense = Number(prompt("Enter Food expense:"));
-    transportExpense = Number(prompt("Enter Transport expense:"));
+document.getElementById("addBtn").addEventListener("click", function(){
+  let name = nameInput.value.trim();
+  let amount = parseFloat(amountInput.value);
+  if(name!== "" &&!isNaN(amount) && amount > 0){
+    expenses.push({name: name, amount: amount});
+    displayExpenses();
+    nameInput.value = "";
+    amountInput.value = "";
+  }
+});
 
-    // REQUIREMENT 5: Create Reusable Functions
-    function calculateTotalExpenses() {
-        return rentExpense + foodExpense + transportExpense;
-    }
+document.getElementById("calculateBtn").addEventListener("click", function(){
+  let budget = parseFloat(budgetInput.value) || 0;
+  let total = 0;
+  for(let i=0; i<expenses.length; i++){
+    total += expenses[i].amount;
+  }
+  let balance = budget - total;
+  let msg = "";
+  if(balance >= 0){
+    msg = "Within Budget - Good job!";
+  } else {
+    msg = "Overspent! Cut expenses.";
+  }
+  resultDiv.innerHTML = `
+    <p>Total Expenses: KSH ${total}</p>
+    <p>Remaining Balance: KSH ${balance}</p>
+    <p>${msg}</p>
+  `;
+});
 
-    function calculateBalance() {
-        return monthlyBudget - calculateTotalExpenses();
-    }
-
-    // REQUIREMENT 4: Perform Budget Calculations
-    let total = calculateTotalExpenses();
-    let balance = calculateBalance();
-
-    // REQUIREMENT 6: Display Results in Console
-    console.log("--- SpendWise Budget Summary ---");
-    console.log("Name: " + userName);
-    console.log("Monthly Budget: KSH " + monthlyBudget);
-    console.log("Rent: KSH " + rentExpense);
-    console.log("Food: KSH " + foodExpense);
-    console.log("Transport: KSH " + transportExpense);
-    console.log("Total Expenses: KSH " + total);
-    console.log("Remaining Balance: KSH " + balance);
-
-    if (balance < 0) {
-        console.log("Status: Overspent!");
-    } else {
-        console.log("Status: Within budget");
-    }
-
-    // Show on page too
-    document.getElementById("output").innerHTML = `
-        <h3>Hello ${userName}</h3>
-        <p>Budget: KSH ${monthlyBudget}</p>
-        <p>Total: KSH ${total}</p>
-        <p>Balance: KSH ${balance}</p>
-    `;
+function displayExpenses(){
+  expenseList.innerHTML = "";
+  for(let exp of expenses){
+    let li = document.createElement("li");
+    li.textContent = exp.name.toUpperCase() + ": KSH " + exp.amount;
+    expenseList.appendChild(li);
+  }
 }
-
-// Auto-run
-runSpendWise();
