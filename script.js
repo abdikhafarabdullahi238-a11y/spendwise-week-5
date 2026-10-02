@@ -35,12 +35,3 @@ document.getElementById("calculateBtn").addEventListener("click", function(){
     <p>${msg}</p>
   `;
 });
-
-function displayExpenses(){
-  expenseList.innerHTML = "";
-  for(let exp of expenses){
-    let li = document.createElement("li");
-    li.textContent = exp.name.toUpperCase() + ": KSH " + exp.amount;
-    expenseList.appendChild(li);
-  }
-}
